@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovely Compatibility Checker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        /* Add your custom CSS styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Satisfy', cursive;
+        }
+
+        body {
+            background-color: #FFF0F5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #FF69B4;
+            margin-bottom: 25px;
+        }
+
+        .photo-section h2 {
+            font-size: 22px;
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 15px auto;
+            padding: 10px;
+            border: 3px dashed #FF69B4;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #FF69B4;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #E6416E;
+        }
+
+        .loading {
+            color: #FF69B4;
+            font-size: 20px;
+            margin-top: 25px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .result {
+            color: #8B4513;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #FFF0F5;
+            border-radius: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lovely Compatibility Checker 💕</h1>
+
+        <div class="photo-section">
+            <h2>Upload Your Photos</h2>
+            <input type="file" id="photo1" accept="image/*" placeholder="Upload Your Photo">
+            <input type="file" id="photo2" accept="image/*" placeholder="Upload Your Partner's Photo">
+            <button onclick="startCheck()">Check Compatibility</button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            🌀 Compatibility Checking...
+        </div>
+
+        <div id="result" class="result hidden">
+        </div>
+
+        <script>
+            // Compatibility messages
+            const messages = [
+                "ඔයාලා දෙන්නා අතරේ හිතවත්කම හා විශ්වාසය විශේෂව පවතිනවා. එකිනෙකාගේ හීන සහ අරමුණු උදෙසා මංමුලානේ සිටී, එකිනෙකාගේ දෝෂ අනුමත කර ගනිමින් ආදරයෙන් පරිපූර්ණව සෙමෙන් ඉදිරියට යනවා.",
+                "😊ඔයාලා දෙන්නාට බොහොම දේවල් අතරේ සමානකමක් තියනවා, ඒත් සමහර වෙලාවට එකිනෙකාගෙ පෞරුෂයන් සහ සිහින විෂයයන් පිළිබඳව ටිකක් වෙනස් අත්දැකීම් තියෙන්න පුළුවන්.",
+                "💖ඔයාලා දෙන්නා අතරේ කුමන හෝ ගැලපීමක් තියනවා කියලා පේනවා, නමුත් සමහර වෙලාවට එකිනෙකාගේ වටිනාකම් සහ ආකල්ප ටිකක් වෙනස් වෙන්නත් පුළුවන්."
+            ];
+
+            function startCheck() {
+                const loadingElement = document.getElementById("loading");
+                const resultElement = document.getElementById("result");
+
+                // Show loading message
+                loadingElement.classList.remove("hidden");
+                resultElement.classList.add("hidden");
+
+                // Simulate 7-second processing delay
+                setTimeout(() => {
+                    // Hide loading message
+                    loadingElement.classList.add("hidden");
+
+                    // Select a random message
+                    const randomIndex = Math.floor(Math.random() * messages.length);
+                    const selectedMessage = messages[randomIndex];
+
+                    // Display the result
+                    resultElement.innerText = selectedMessage;
+                    resultElement.classList.remove("hidden");
+                }, 7000);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
